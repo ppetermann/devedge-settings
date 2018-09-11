@@ -2,6 +2,7 @@
 ## VERSION 1  MAKE IT WORK
 
  * Version **1.0** - make it work
+   * 2018-09-11 13:34  **1.0.2**  fix missing return
    * 2018-09-11 13:29  **1.0.1**  this
    * 2018-09-11 13:26  **1.0.0**  initial release
 
