@@ -11,9 +11,10 @@ class EnvSettingsFactory
 
     /**
      * @param string $filename
+     * @return EnvSettingsFactory
      * @throws \Exception
      */
-    public function setEnvironmentsFromJsonFile(string $filename)
+    public function setEnvironmentsFromJsonFile(string $filename) : EnvSettingsFactory
     {
         if (!file_exists($filename)) {
             throw new \Exception("file '$filename' not found");
