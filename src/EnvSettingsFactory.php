@@ -1,6 +1,6 @@
 <?php
 
-namespace King23\Settings;
+namespace Devedge\Settings;
 
 class EnvSettingsFactory
 {
