@@ -1,0 +1,8 @@
+docs/
+vendor
+build/api/
+build/code-browser/
+build/coverage/
+build/phpdox/
+cache.properties
+atlassian-ide-plugin.xml

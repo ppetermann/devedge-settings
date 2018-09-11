@@ -1,0 +1,18 @@
+{
+    "name": "devedge/settings",
+    "description": "environment based settings",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Peter Petermann",
+            "email": "ppetermann80@googlemail.com"
+        }
+    ],
+    "require": {
+        "king23/king23": "~4.1"
+    },
+    "autoload": {
+        "psr-4": { "Devedge\\Settings\\": "src/"}
+    }
+}
