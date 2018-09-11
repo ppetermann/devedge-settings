@@ -12,7 +12,15 @@
     "require": {
         "king23/king23": "~4.1"
     },
+    "require-dev": {
+        "devedge/stubs": "~3.0",
+        "nyholm/psr7": "~1.0",
+        "nyholm/psr7-server": "~0.2",
+        "king23/di": "~2.0"
+    },
     "autoload": {
-        "psr-4": { "Devedge\\Settings\\": "src/"}
+        "psr-4": {
+            "Devedge\\Settings\\": "src/"
+        }
     }
 }

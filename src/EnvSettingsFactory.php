@@ -2,10 +2,34 @@
 
 namespace Devedge\Settings;
 
+use King23\Settings\JsonSettings;
+use King23\Settings\SettingsChain;
+
 class EnvSettingsFactory
 {
     protected $settings = [];
 
+    /**
+     * @param string $filename
+     * @throws \Exception
+     */
+    public function setEnvironmentsFromJsonFile(string $filename)
+    {
+        if (!file_exists($filename)) {
+            throw new \Exception("file '$filename' not found");
+        }
+        if (!defined("JSON_THROW_ON_ERROR")) {
+            define("JSON_THROW_ON_ERROR", 4194304);
+        }
+
+        $this->settings = json_decode(file_get_contents($filename), true, 512, JSON_THROW_ON_ERROR);
+    }
+
+    /**
+     * @param string $environment
+     * @param array $files
+     * @return EnvSettingsFactory
+     */
     public function registerEnvironmentFiles(string $environment, array $files): EnvSettingsFactory
     {
         $this->settings[$environment] = $files;
@@ -25,7 +49,7 @@ class EnvSettingsFactory
 
         $settingsChain = new SettingsChain();
 
-        foreach($this->settings[$environment] as $file) {
+        foreach ($this->settings[$environment] as $file) {
             $settingsChain->registerSettingsProvider(JsonSettings::fromFilename($file));
         }
 
