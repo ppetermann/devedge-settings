@@ -8,13 +8,19 @@ use King23\Settings\SettingsChain;
 class EnvSettingsFactory
 {
     protected $settings = [];
+    protected $home = "./";
+
+    public function setHome(string $home)
+    {
+        $this->home = $home;
+    }
 
     /**
      * @param string $filename
      * @return EnvSettingsFactory
      * @throws \Exception
      */
-    public function setEnvironmentsFromJsonFile(string $filename) : EnvSettingsFactory
+    public function setEnvironmentsFromJsonFile(string $filename): EnvSettingsFactory
     {
         if (!file_exists($filename)) {
             throw new \Exception("file '$filename' not found");
@@ -52,9 +58,14 @@ class EnvSettingsFactory
         $settingsChain = new SettingsChain();
 
         foreach ($this->settings[$environment] as $file) {
+            if(substr($file, 0, 2) == "~/") {
+                $file = $this->home . substr($file, 2);
+            }
+            if (!file_exists($file)) {
+                continue;
+            }
             $settingsChain->registerSettingsProvider(JsonSettings::fromFilename($file));
         }
-
         return $settingsChain;
     }
 }
