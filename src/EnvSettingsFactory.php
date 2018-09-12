@@ -10,9 +10,14 @@ class EnvSettingsFactory
     protected $settings = [];
     protected $home = "./";
 
+    /**
+     * @param string $home
+     * @return self $this
+     */
     public function setHome(string $home)
     {
         $this->home = $home;
+        return $this;
     }
 
     /**
